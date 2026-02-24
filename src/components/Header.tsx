@@ -6,15 +6,15 @@ export default function Header() {
       <div className="mx-auto grid min-h-[70vh] max-w-5xl items-center px-4 py-16 md:py-24">
         <div className="max-w-3xl">
           <p className="text-xs uppercase tracking-[0.2em] text-white/50">
-            Jonas Santos — Desenvolvedor de Software
+            Desenvolvedor de Software
           </p>
 
           <h1 className="mt-4 text-4xl font-semibold leading-tight text-white md:text-6xl">
-            Backend com foco em ERP e APIs escaláveis
+            Jonas Santos
           </h1>
 
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
-            +3 anos construindo e evoluindo sistemas com Laravel e NestJS. Experiência com Redis, AWS e
+            +3 anos construindo e evoluindo sistemas com Laravel e ReactJS. Experiência com Redis, AWS e
             performance.
           </p>
 
