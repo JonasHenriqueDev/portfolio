@@ -12,8 +12,8 @@ export default function About() {
             </h2>
             <p className="mt-6 leading-relaxed text-white/70">
               Desenvolvedor Backend com mais de 3 anos de experiência na construção e evolução de sistemas ERP e APIs
-              REST escaláveis utilizando Laravel e NestJS. Experiência com arquitetura de software, idempotência com
-              Redis e infraestrutura em AWS.
+              REST escaláveis utilizando Laravel e NestJS. No front, trabalho com React.js usando Tailwind CSS e Vite.
+              Experiência com arquitetura de software, idempotência com Redis e infraestrutura em AWS.
             </p>
             <p className="mt-4 leading-relaxed text-white/70">
               Atuação em sistemas que suportam mais de 250 usuários, com foco em performance, confiabilidade e redução
