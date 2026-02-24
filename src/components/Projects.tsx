@@ -1,4 +1,5 @@
 import { ExternalLink, Github } from 'lucide-react'
+import { useI18n } from '../i18n'
 
 type Project = {
   title: string
@@ -9,77 +10,43 @@ type Project = {
   featured?: boolean
 }
 
-const projects: Project[] = [
-  {
-    title: 'Sistema de Gestão de Pedidos e Estoque',
-    description:
-      'Sistema full stack para gerenciamento de pedidos, produtos e usuários. Autenticação JWT, RBAC, processamento assíncrono com filas/Redis e testes no backend (Pest). CI com GitHub Actions e frontend em React + Vite + Tailwind.',
-    tags: [
-      'Laravel',
-      'PHP',
-      'PostgreSQL',
-      'Redis',
-      'Horizon',
-      'React',
-      'Vite',
-      'Tailwind',
-      'JWT',
-      'GitHub Actions',
-      'Pest',
-    ],
-    repo: 'https://github.com/jonashenriquedev/order-mananger-crud',
-    featured: true,
-  },
-  // {
-  //   title: 'API REST (NestJS) — Arquitetura Hexagonal',
-  //   description:
-  //     'Projeto de API seguindo arquitetura hexagonal, com boa separação de camadas e foco em testes e evolução segura.',
-  //   tags: ['NestJS', 'TypeScript', 'Swagger', 'PostgreSQL'],
-  //   repo: 'https://github.com/jonashenriquedev',
-  // },
-  // {
-  //   title: 'ERP em Laravel — Módulos Financeiros e Operacionais',
-  //   description:
-  //     'Exemplos de padrões e soluções aplicadas em contexto de ERP: otimização de queries, idempotência com Redis e padronização via Docker.',
-  //   tags: ['Laravel', 'Redis', 'Docker', 'Performance'],
-  // },
-]
-
 export default function Projects() {
-  const featured = projects.filter((p) => p.featured)
-  const rest = projects.filter((p) => !p.featured)
+  const { t } = useI18n()
+
+  const featured = t.projects.items.filter((p) => p.featured)
+  const rest = t.projects.items.filter((p) => !p.featured)
 
   return (
     <section id="projetos" className="border-b border-white/10">
       <div className="mx-auto max-w-5xl px-4 py-16 md:py-20">
         <p className="text-xs uppercase tracking-[0.2em] text-white/50">
-          Projetos
+          {t.projects.kicker}
         </p>
         <h2 className="mt-3 text-2xl font-semibold text-white md:text-3xl">
-          Em destaque
+          {t.projects.title}
         </h2>
 
         <div className="mt-10 grid gap-4">
           {featured.map((p) => (
-            <ProjectCard key={p.title} project={p} featured />
+            <ProjectCard key={p.title} project={p} featuredBadge={t.projects.featuredBadge} featured />
           ))}
         </div>
 
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           {rest.map((p) => (
-            <ProjectCard key={p.title} project={p} />
+            <ProjectCard key={p.title} project={p} featuredBadge={t.projects.featuredBadge} />
           ))}
         </div>
 
         <div id="contato" className="mt-16 border border-white/10 bg-white/5 p-6">
           <p className="text-xs uppercase tracking-widest text-white/50">
-            Contato
+            {t.projects.contact.kicker}
           </p>
           <h3 className="mt-3 text-xl font-semibold text-white">
-            Vamos conversar
+            {t.projects.contact.title}
           </h3>
           <p className="mt-3 text-sm leading-relaxed text-white/70">
-            Quer falar sobre um projeto, vaga ou parceria? Me chame no email ou LinkedIn.
+            {t.projects.contact.description}
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <a
@@ -94,7 +61,7 @@ export default function Projects() {
               rel="noreferrer"
               className="inline-flex border border-white/10 px-4 py-2 text-xs uppercase tracking-widest text-white/80 hover:text-white hover:border-white/20 transition-colors"
             >
-              LinkedIn
+              {t.projects.contact.linkedinCta}
             </a>
           </div>
         </div>
@@ -106,9 +73,11 @@ export default function Projects() {
 function ProjectCard({
   project,
   featured,
+  featuredBadge,
 }: {
   project: Project
   featured?: boolean
+  featuredBadge: string
 }) {
   return (
     <article className="border border-white/10 bg-white/5 p-6">
@@ -118,7 +87,7 @@ function ProjectCard({
             <h3 className="text-base font-semibold text-white">{project.title}</h3>
             {featured && (
               <span className="border border-white/10 bg-black/20 px-2 py-1 text-[11px] uppercase tracking-widest text-white/60">
-                Destaque
+                {featuredBadge}
               </span>
             )}
           </div>
@@ -154,12 +123,12 @@ function ProjectCard({
       </div>
 
       <div className="mt-5 flex flex-wrap gap-2">
-        {project.tags.map((t) => (
+        {project.tags.map((tag) => (
           <span
-            key={t}
+            key={tag}
             className="border border-white/10 bg-black/20 px-2 py-1 text-[11px] uppercase tracking-widest text-white/70"
           >
-            {t}
+            {tag}
           </span>
         ))}
       </div>

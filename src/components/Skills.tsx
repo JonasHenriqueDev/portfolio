@@ -1,36 +1,18 @@
-const skills = [
-  {
-    group: 'Backend & Frontend',
-    items: [
-      'Laravel / PHP',
-      'React.js / TypeScript',
-      'Tailwind CSS',
-      'Vite',
-      'NestJS / Node.js',
-      'APIs REST',
-    ],
-  },
-  {
-    group: 'Dados & Cache',
-    items: ['PostgreSQL', 'MySQL', 'Redis (idempotência)', 'Otimização de queries'],
-  },
-  {
-    group: 'Infra & Ferramentas',
-    items: ['Docker', 'AWS (S3 / Lambda)', 'Swagger', 'GitHub / CI'],
-  },
-]
+import { useI18n } from '../i18n'
 
 export default function Skills() {
+  const { t } = useI18n()
+
   return (
     <section id="skills" className="border-b border-white/10">
       <div className="mx-auto max-w-5xl px-4 py-16 md:py-20">
-        <p className="text-xs uppercase tracking-[0.2em] text-white/50">Skills</p>
+        <p className="text-xs uppercase tracking-[0.2em] text-white/50">{t.skills.kicker}</p>
         <h2 className="mt-3 text-2xl font-semibold text-white md:text-3xl">
-          Tecnologias e práticas
+          {t.skills.title}
         </h2>
 
         <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {skills.map((g) => (
+          {t.skills.groups.map((g) => (
             <div key={g.group} className="border border-white/10 bg-white/5 p-6">
               <h3 className="text-xs uppercase tracking-widest text-white/70">
                 {g.group}
